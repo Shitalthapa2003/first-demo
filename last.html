@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopEasy PWA</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(270deg, #ff6f61, #6a5acd);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeIn 1.2s ease-in-out forwards;
+      opacity: 0;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 500px;
+      animation: slideUp 1.5s ease-in-out forwards;
+      opacity: 0;
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background: white;
+      color: #6a5acd;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛍️ ShopEasy</h1>
+  <p>Welcome to ShopEasy – your offline-ready e-commerce experience. Enjoy fast shopping even when you're offline!</p>
+  <button onclick="subscribe()">Subscribe to Deals</button>
+
+  <script>
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(reg => console.log('Service Worker registered', reg))
+        .catch(err => console.error('SW registration failed', err));
+    }
+
+    // Request Notification Permission
+    function subscribe() {
+      Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+          new Notification("🎉 You're subscribed to ShopEasy deals!");
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

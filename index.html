@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+
+  <!-- Internal CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(to right, #1e1e2f, #111);
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: #aaa;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #ff4081;
+      color: #fff;
+      border: none;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #e73370;
+    }
+
+    #projects {
+      padding: 4rem 2rem;
+      background: #1a1a1a;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: #2a2a2a;
+      padding: 1.5rem;
+      border-radius: 16px;
+      transition: transform 0.3s;
+      text-align: center;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      background: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background: #111;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <h1 class="hero-title">Hey, I'm Alex</h1>
+    <p class="hero-subtitle">Creative Developer & Designer</p>
+    <a href="#projects" class="btn">See My Work</a>
+  </header>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">🌐 Portfolio Website</div>
+      <div class="project-card">📱 Mobile App Design</div>
+      <div class="project-card">🖼️ 3D Art with Three.js</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Alex | Built with ❤️ using HTML & CSS</p>
+  </footer>
+
+</body>
+</html>

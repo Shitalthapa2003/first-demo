@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Learning Platform</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #6200ea;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      padding: 2rem;
+    }
+    .video-container, .quiz-container, .progress-container {
+      background: white;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    button {
+      background-color: #6200ea;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .progress-bar {
+      height: 20px;
+      background-color: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .progress-fill {
+      height: 100%;
+      background-color: #6200ea;
+      width: 0;
+      transition: width 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Online Learning Platform</h1>
+  </header>
+
+  <div class="container">
+
+    <!-- Video Section -->
+    <div class="video-container">
+      <h2>Lesson 1: Introduction</h2>
+      <video width="100%" controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <br><br>
+      <button onclick="markLessonComplete()">Mark as Complete</button>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="quiz-container">
+      <h2>Quiz</h2>
+      <p>What does HTML stand for?</p>
+      <input type="radio" name="q1" value="A"> Hyper Text Markup Language<br>
+      <input type="radio" name="q1" value="B"> High Text Machine Language<br>
+      <input type="radio" name="q1" value="C"> Hyperloop Machine Language<br><br>
+      <button onclick="submitQuiz()">Submit Quiz</button>
+      <p id="quiz-result"></p>
+    </div>
+
+    <!-- Progress Section -->
+    <div class="progress-container">
+      <h2>Progress</h2>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <p id="progress-text">0% completed</p>
+    </div>
+
+  </div>
+
+  <!-- JavaScript Section -->
+  <script>
+    let progress = 0;
+
+    function markLessonComplete() {
+      progress += 50;
+      updateProgress();
+      alert("Lesson marked as complete!");
+    }
+
+    function submitQuiz() {
+      const answers = document.getElementsByName("q1");
+      let selected = "";
+      for (let i = 0; i < answers.length; i++) {
+        if (answers[i].checked) {
+          selected = answers[i].value;
+          break;
+        }
+      }
+      if (selected === "A") {
+        progress += 50;
+        document.getElementById("quiz-result").textContent = "Correct!";
+      } else {
+        document.getElementById("quiz-result").textContent = "Incorrect. Try again!";
+        return;
+      }
+      updateProgress();
+    }
+
+    function updateProgress() {
+      if (progress > 100) progress = 100;
+      document.getElementById("progress-fill").style.width = progress + "%";
+      document.getElementById("progress-text").textContent = progress + "% completed";
+    }
+  </script>
+</body>
+</html>

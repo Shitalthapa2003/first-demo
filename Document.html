@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real-Time Collaborative Editor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(270deg, #e66465, #9198e5);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      margin: 0;
+      padding: 2rem;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    textarea {
+      width: 100%;
+      height: 300px;
+      font-size: 16px;
+      padding: 1rem;
+      border-radius: 10px;
+      border: none;
+      resize: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      animation: slideIn 0.8s ease forwards;
+    }
+
+    .typing {
+      font-family: monospace;
+      font-size: 1rem;
+      margin-top: 1rem;
+      border-right: 2px solid white;
+      display: inline-block;
+      animation: blink 0.7s step-end infinite;
+    }
+
+    button {
+      background-color: #fff;
+      color: #6200ea;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      animation: bounce 0.3s ease;
+    }
+
+   
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    @keyframes bounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Collaborative Editor</h1>
+  <textarea id="editor" placeholder="Start typing..."></textarea>
+  <p class="typing">User is typing</p>
+  <br>
+  <button onclick="alert('You clicked save!')">Save</button>
+
+</body>
+</html>
